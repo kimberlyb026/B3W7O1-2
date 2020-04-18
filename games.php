@@ -15,20 +15,20 @@ $servername = "localhost";
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" type="text/css" href="./style.css">
 <link href="https://fonts.googleapis.com/css?family=BioRhyme+Expanded&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Cinzel&display=swap" rel="stylesheet">
 
 <title></title>
 </head>
-<body>
+<body background=".img/gold.jpg">
 <div id="navbar"></div>
 <h2><a href="indekc.php">home</a></h2>
 <h2><a href="games.php">games om te spelen</a></h2>
 <h2><a href="indekc.php">planning</a></h2>
 
 
-<h1>spelletjesdag</h1>
+<h1>games om te spelen</h1>
 
 
 <!-- <?php
