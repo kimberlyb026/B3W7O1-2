@@ -9,7 +9,10 @@ $servername = "localhost";
 	$conn = new PDO('mysql:host=localhost;dbname=spelletjes', $username, $password);
 	$stnt = $conn->prepare('SELECT * FROM games');
 	$stnt->execute();
-	$result = $stnt->fetchAll();
+    $result = $stnt->fetchAll();
+    $stnt= $pdo-> prepare("UPDATE game set name =:name );
+$stnt->bindParam("name");
+	
 	
     try{
 $conn = new PDO('mysql:host=localhost;dbname=spelletjes', $username, $password);
@@ -25,7 +28,6 @@ catch(PDOexception $e){
 
 ?>
 
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,33 +36,19 @@ catch(PDOexception $e){
 <link href="https://fonts.googleapis.com/css?family=Cinzel&display=swap" rel="stylesheet">
 
 <title></title>
-
-<body>
+</head>
+<body background=".img/gamers.jpg">
 
 <div id="navbar"></div>
 <h2><a href="indekc.php">home</a></h2>
 <h2><a href="planning.php">planning</a></h2>
+<h2><a href="update.php">update game
+</a></h2>
 
 
+<h1>update</h1>
 
-<h1>home</h1>
-
-
-<?php
-foreach ($result as $games) {
-
-	echo"<div class= 'alles'>";
-	echo '<a href="game.php/?name=' . urlencode($games['name']) . '">';
-	echo "<img src='img/" .$games['image'] . "'>";
-
-	    echo "<p id='name'>".$games['name']. "</p>";
-
-echo "</a>";
-
-echo"<div>";
-}
-
-?>
+ 
 
 </body>
 </html>
