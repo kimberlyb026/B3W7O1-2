@@ -1,66 +1,53 @@
 <?php
-
-
-$servername = "localhost";
-    $username = "games";
-    $password = "hallokever";
-	$dbname = "spelletjes";
-	
-	$conn = new PDO('mysql:host=localhost;dbname=spelletjes', $username, $password);
-	$stnt = $conn->prepare('SELECT * FROM games');
-	$stnt->execute();
-	$result = $stnt->fetchAll();
-	
-    try{
-$conn = new PDO('mysql:host=localhost;dbname=spelletjes', $username, $password);
-
-echo "connected succesfully";
-
-}
-
-catch(PDOexception $e){
-	echo " connection failed". $e->getMessage();
-}
-
-
+      require("functie.php");
+	  $conn =  openDatabaseConnection();
 ?>
 
 
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <link rel="stylesheet" type="text/css" href="./style.css">
 <link href="https://fonts.googleapis.com/css?family=BioRhyme+Expanded&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Cinzel&display=swap" rel="stylesheet">
 
-<title></title>
+<title>games</title>
 
 <body>
 
-<div id="navbar"></div>
-<h2><a href="indekc.php">home</a></h2>
-<h2><a href="planning.php">planning</a></h2>
+<div class="navbar"></div>
+<a href="planning.php">PLANNING</a>
+<a href="create.php">CREATE</a>
+</div>
 
 
 
-<h1>home</h1>
 
+<div class="container">
+  <h2>Games</h2>
+   <div class="row">
+   <?php
+            $results = getGames($conn);
+            foreach($results as $result){
+                ?>
+        <div class="img-thumbnail col-2">
+        <a class="game" href="game.php?id=<?=$row['id']?>">
+        <h2 class="text-center"><?=$row['name']?></h2> 
+        <div class="ml-5">
+                <img class="w-50 ml-5 mt-5 mb-5" src="img/<?=$row['image']?>">
+				<a href="game.php?id=<? echo $result['id'] ?>">More info</a><br>
+         </div>
+            </a>
+         </div>
+      <?php
+          }
+      ?>
 
-<?php
-foreach ($result as $games) {
-
-	echo"<div class= 'alles'>";
-	echo '<a href="game.php/?name=' . urlencode($games['name']) . '">';
-	echo "<img src='img/" .$games['image'] . "'>";
-
-	    echo "<p id='name'>".$games['name']. "</p>";
-
-echo "</a>";
-
-echo"<div>";
-}
-
-?>
 
 </body>
 </html>
