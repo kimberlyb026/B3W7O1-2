@@ -32,7 +32,7 @@
         $stnt = $conn->prepare("SELECT name FROM games where id = :id ;");
         $stnt->bindParam(':id', $getresult);
         $stnt->execute();
-        $id = $sql->fetchAll();
+        $id = $stnt->fetch();
         $conn = null;
         return $id;
     }
@@ -59,6 +59,7 @@
     function getPlanning(){
         $conn = openDataBaseConnection();
         $stnt=$conn->prepare('SELECT * FROM planning');
+        $stnt->execute();
         return $stnt->fetchAll();
         $conn = null;
     
@@ -78,7 +79,7 @@
         $stnt->bindParam(':time', $updatedtime);
         $stnt->bindParam(':host', $updatedhost);
         $stnt->bindParam(':players', $updatedplayers);
-
+        $stnt->execute();
         $conn = null;
         return $update;
         

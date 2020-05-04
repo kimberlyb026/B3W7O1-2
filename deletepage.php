@@ -1,6 +1,6 @@
 <?php
       require "./functie.php";
-    $conn = connect();
+      $conn =  openDatabaseConnection();
     $getresult = $_POST['id'];
     $getPlanning = $_POST['planningid'];
     $gamename = Name($getresult);
@@ -16,15 +16,15 @@
 <body>
     <div id="deletepage">
         <div id="deleteText">
-            <? if($getresult != NULL){ ?>
+            <?php if($getresult != NULL){ ?>
                 <p>weet je het zker dat je het wilt deleten.</p>
             <form action="indekc.php" method="post" class="deleteForm">
                 <input type="hidden" value="<?= $getresult ?>" name="id"></input>
                 <input type="submit" value="YES" class="deleteButton"></input>
             </form>
-           
+           <?php } ?>
 
-            <? if($getPlanning != NULL){ ?>
+            <?php if($getPlanning != NULL){ ?>
             <p>weet je zeker dat je het wilt deleten.</p>
             <form action="planning.php" method="post" class="deleteForm">
             <input type="hidden" name="action" value="delete">
@@ -34,7 +34,7 @@
             <form action="planning.php" method="post" class="deleteForm">
                 <input type="submit" value="NO" class="deleteButton"></input>
             </form>
-
+<?php } ?>
 
         </div>
  

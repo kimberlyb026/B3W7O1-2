@@ -25,7 +25,7 @@
             <div id="mainpage">
             <form method="post" action="planning.php" style="margin: 25px">
             <input type="hidden" name="action" value="create">
-			  Explainer : <input type="text" name="host" placeholder="host name" required/><br />
+			 host : <input type="text" name="host" placeholder="host name" required/><br />
                 <label>Select game:</label>
                 <select name="gameid">
                     <? foreach($results as $games) { ?>

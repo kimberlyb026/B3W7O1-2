@@ -1,6 +1,6 @@
 <?php
     include_once  "./functie.php";
-    $conn = connect();
+    $conn = openDatabaseConnection();
     $results = getGames($conn);
     $planningId = $_GET['planningid'];
 ?>
@@ -23,11 +23,16 @@
             <div id="mainpage">
             <form method="post" action="planning.php" style="margin: 25px">
 			</select>
+			<input type="hidden" name="id" value="<?php echo $planningId ?>">
+			
+		
 			<input type="hidden" name="action" value="update">
-        <label for="starttime">START TIME:</label><input type="time" name="starttime" id="starttime">
-        <label for="host">HOST:</label><input type="text" name="host" id="host">
-        <label for="players">PLAYERS:</label><input type="text" name="players" id="players">
-        <input type="submit" value="PLAN DIT SPEL!" style="text-align: center; width: 10%">
+			Time: <input type="time" value="Submit" name="time" required/><br>
+			Date: <input type="date"  name="date" required/><br>
+                Players: <input type="text" placeholder="players" name="players" required/><br>
+				Host: <input type="text" placeholder="host" name="host" required/><br>
+                <input type="submit" value="Submit" />
+       
     </form>
             </div>
         </div>

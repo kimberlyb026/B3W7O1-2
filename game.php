@@ -1,6 +1,6 @@
 <?php
    require "./functie.php";
-    connect();
+   $conn =  openDatabaseConnection();
     $getresult = $_GET['id'];
     if($getresult == NULL){
        $getresult = $_POST['id']; 
@@ -78,9 +78,7 @@
 					<p class="mt-4">url: <a href="<?= $result['url']?>"><?= $result['url'] ?></a></p>
                     
                     <? echo $results[0]['youtube'] ?>
-					<a class="mt-4 ml-5" href="update.php"><button>game plannen</button></a>
-					<a class="mt-4 ml-5" href="deletepage.php"><button>game deleten</button></a>
-					
+			
                 </div>
         </div>
     </div>

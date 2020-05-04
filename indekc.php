@@ -36,10 +36,10 @@
             foreach($results as $result){
                 ?>
         <div class="img-thumbnail col-2">
-        <a class="game" href="game.php?id=<?=$row['id']?>">
-        <h2 class="text-center"><?=$row['name']?></h2> 
+        <a class="game" href="game.php?id=<?=$result['id']?>">
+        <h2 class="text-center"><?=$result['name']?></h2> 
         <div class="ml-5">
-                <img class="w-50 ml-5 mt-5 mb-5" src="img/<?=$row['image']?>">
+                <img class="w-50 ml-5 mt-5 mb-5" src="img/<?= $result['image']?>">
 				<a href="game.php?id=<? echo $result['id'] ?>">More info</a><br>
          </div>
             </a>
